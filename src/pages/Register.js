@@ -252,28 +252,29 @@ export default function Register() {
         let tmpPage = pageId;
         switch (tmpPage) {
             case 0: //page 0→1
-                fetch(`${misterCoockyApi.misterCoockyApi}/graphql`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        query: `
-                    query{​​​​​​​
-                        getMail(mail:"${email}"){​​​​​​​
-                            id
-                        }​​​​​​​
-                    }`,
-                    }),
-                })
-                    .then((res) => res.json())
-                    .then(function (result) {
-                        if (result.data.getMail !== null) {
-                            setAlertMail("email déjà utilisé!");
-                        } else {
-                            setPageId(tmpPage + 1);
-                        }
-                    });
+                // fetch(`${misterCoockyApi.misterCoockyApi}/graphql`, {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify({
+                //         query: `
+                //     query{​​​​​​​
+                //         getMail(mail:"${email}"){​​​​​​​
+                //             id
+                //         }​​​​​​​
+                //     }`,
+                //     }),
+                // })
+                //     .then((res) => res.json())
+                //     .then(function (result) {
+                //         if (result.data.getMail !== null) {
+                //             setAlertMail("email déjà utilisé!");
+                //         } else {
+                //             setPageId(tmpPage + 1);
+                //         }
+                //     });
+                setPageId(tmpPage + 1);
                 break;
             case 1: //page 1→2
                 setSubmited(true);
