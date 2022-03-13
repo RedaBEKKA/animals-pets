@@ -10,12 +10,12 @@ import {
   MyAnnoncesPage,
   MyProductPage,
   OrganizationInfo,
-  Register,
   SignIn,
   Statistics,
   StatisticsMrAdopt,
-  UserProfile,
+  UserProfile,Register
 } from './pages';
+
 import React from "react";
 import SecuredRoute from "./components/SecuredRoute";
 

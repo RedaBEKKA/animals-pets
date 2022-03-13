@@ -2,7 +2,7 @@ import Home from "./Home"
 import MyProductPage from "./MyProductPage"
 import Statistics from "./Statistics"
 import AddAnnonce from "./AddAnnonce"
-import Register from "./Register"
+import Register from "./Register/Register"
 import Addproduct from "./Addproduct"
 import StatisticsMrAdopt from "./StatisticsMrAdopt";
 import FilesControlPanel from "./FilesControlPanel";
