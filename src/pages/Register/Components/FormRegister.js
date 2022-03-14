@@ -1,7 +1,6 @@
 /*eslint-disable*/
-import { Box, Paper } from "@material-ui/core";
-import React, { useState } from "react";
-
+import { Paper } from "@material-ui/core";
+import React  from "react";
 import { Form, Formik } from "formik";
 import { UseRegister } from "../hooks/useForm";
 import From1 from "./From1";
@@ -12,14 +11,20 @@ import Error from "./Error";
 function FormRegister(props) {
   const { RegsiterSchema, registerValues,pageId,fetchEmail,onReturn,alertMail } = UseRegister();
   const classes = useStyles();
-console.log('pageId', pageId)
+
+  /**
+   * Récupération du contenu de page selon le numéro de page
+   * page 0 : nom,prénom... mot de passe
+   * page 1 : organisation
+   * @returns {*}
+   */
+
   const GetFormContent = ({ formik,onReturn,alertMail }) => {
     switch (pageId) {
       case 0:
         return <From1 formik={formik} alertMail={alertMail}  />;
       case 1:
         return <From2 formik={formik}  onReturn={onReturn}/>;
-
       default:
         break;
     }
@@ -33,7 +38,6 @@ console.log('pageId', pageId)
         validationSchema={RegsiterSchema}
         onSubmit={(value,formikAction) => {
           setTimeout(() => {
-            // console.log('value', value.email,formikAction);
             fetchEmail(value.email)
             formikAction.setSubmitting(false);
             formikAction.resetForm();
@@ -41,8 +45,6 @@ console.log('pageId', pageId)
         }}
       >
         {(formik) => {
-          console.log("formik---------", formik.errors);
-
           return [
             <Form autoComplete="on" name="hotel">
               {formik.errors.password && formik.touched.password && <Error />}

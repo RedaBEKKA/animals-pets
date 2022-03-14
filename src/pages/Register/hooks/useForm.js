@@ -7,7 +7,7 @@ import misterCoockyApi from "../../../constante/apiUrl";
 setLocale(fr);
 
 export function UseRegister() {
-  const [pageId, setPageId] = useState(0); //numéro de page du formulaire d'inscription (0,1,2)
+  const [pageId, setPageId] = useState(1); //numéro de page du formulaire d'inscription (0,1,2)
   const [alertMail, setAlertMail] = useState(""); //message d'alerte au niveau de l'adresse mail
 
   const registerValues = {
@@ -105,6 +105,7 @@ export function UseRegister() {
     RegsiterSchema,
     fetchEmail,
     alertMail,
-    pageId
+    pageId,
+    onReturn
   };
 }

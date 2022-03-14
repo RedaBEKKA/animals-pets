@@ -7,9 +7,8 @@ import Alert from "@material-ui/lab/Alert";
 
 function From1({ formik ,alertMail}) {
   const classes = useStyles();
-  console.log("formik", formik);
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div style={{ marginTop: "50px" , padding:20 }}>
       <Grid container justify="space-between">
         <Field
           variant="outlined"

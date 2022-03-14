@@ -7,9 +7,6 @@ import {
   FormGroup,
   FormLabel,
   Grid,
-  Input,
-  InputLabel,
-  Select,
   TextField,
 } from "@material-ui/core";
 import React from "react";
@@ -17,8 +14,9 @@ import PlacesAutocomplete from "react-places-autocomplete";
 import { Field } from "formik";
 import { colors } from "../../../themes/colors";
 import { useStyles } from "../hooks/Styles";
+import Question from "../../../images/Question.png";
 
-function From2({onReturn}) {
+function From2({ onReturn }) {
   const classes = useStyles();
   const MenuProps = {
     PaperProps: {
@@ -87,7 +85,12 @@ function From2({onReturn}) {
             className={classes.formControl}
             required={true}
           >
-            <FormLabel component="legend" style={{fontWeight:'800',color:"#000"}}>Type de l'enseigne</FormLabel>
+            <FormLabel
+              component="legend"
+              style={{ fontWeight: "800", color: "#000" }}
+            >
+              Type de l'enseigne
+            </FormLabel>
             <FormGroup>
               <FormControlLabel
                 control={
@@ -153,7 +156,12 @@ function From2({onReturn}) {
             component="fieldset"
             className={classes.formControl}
           >
-            <FormLabel component="legend" style={{fontWeight:'800',color:"#000"}}>Type de l'offre</FormLabel>
+            <FormLabel
+              component="legend"
+              style={{ fontWeight: "800", color: "#000" }}
+            >
+              Type de l'offre
+            </FormLabel>
             <FormGroup>
               <FormControlLabel
                 control={
@@ -179,12 +187,18 @@ function From2({onReturn}) {
               />
 
               <FormControl style={{ width: "15vw", marginTop: 10 }}>
-                <FormLabel component="legend" style={{fontWeight:'800',color:"#000"}}>
-                  Label SMR
-                </FormLabel>
+                <Box style={{display:'flex' , alignItems:'center'}}>
+                  <FormLabel
+                    component="legend"
+                    style={{ fontWeight: "800", color: "#000" }}
+                  >
+                    Label SMR
+                  </FormLabel>
+                  <img src={Question} style={{ width: 35, height: 30 }} />
+                </Box>
 
                 <FormControlLabel
-                 style={{ marginTop: 10 }}
+                  style={{ marginTop: 10 }}
                   control={
                     <Checkbox
                       //   checked={estAlim}
@@ -207,18 +221,18 @@ function From2({onReturn}) {
             variant="contained"
             style={{
               backgroundColor: colors.white,
-              color: colors.red,
-              border: `1px solid ${colors.red}`,
+              color: "#000",
+              border: `1px solid ${colors.brown}`,
             }}
             className={classes.btn}
-              onClick={onReturn}
+            onClick={onReturn}
           >
             Précédent
           </Button>
           <Button
             type="submit"
             variant="contained"
-            style={{ backgroundColor: colors.red, color: colors.white }}
+            style={{ backgroundColor: colors.brown, color: colors.white }}
             className={classes.btn}
           >
             Terminer
