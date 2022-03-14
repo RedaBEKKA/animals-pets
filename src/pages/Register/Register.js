@@ -271,7 +271,7 @@ export default function Register() {
       <Grid item xs={12} sm={6} md={6}>
         <div className={classes.paper}>
           <Grid>
-            <img alt="Logo Mister Coocky" width={120} src={logo} />
+            <img alt="Logo Mister Coocky" width={160} src={logo} style={{height:"15vh"}} />
           </Grid>
           <FormRegister />
         </div>

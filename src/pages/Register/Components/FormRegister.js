@@ -10,24 +10,20 @@ import { useStyles } from "../hooks/Styles";
 import Error from "./Error";
 
 function FormRegister(props) {
-  const { RegsiterSchema, registerValues } = UseRegister();
-  const [pageId, setPageId] = useState(0); //numéro de page du formulaire d'inscription (0,1,2)
+  const { RegsiterSchema, registerValues,pageId,fetchEmail,onReturn,alertMail } = UseRegister();
   const classes = useStyles();
-
-  const GetFormContent = ({ formik }) => {
+console.log('pageId', pageId)
+  const GetFormContent = ({ formik,onReturn,alertMail }) => {
     switch (pageId) {
       case 0:
-        return <From1 formik={formik} />;
+        return <From1 formik={formik} alertMail={alertMail}  />;
       case 1:
-        return <From2 formik={formik} />;
+        return <From2 formik={formik}  onReturn={onReturn}/>;
 
       default:
         break;
     }
   };
-  const onSubmit = ()=>{
-    setPageId(pageId +1)
-  }
 
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
@@ -37,8 +33,8 @@ function FormRegister(props) {
         validationSchema={RegsiterSchema}
         onSubmit={(value,formikAction) => {
           setTimeout(() => {
-            // console.log('value', value,formikAction);
-             onSubmit(value)
+            // console.log('value', value.email,formikAction);
+            fetchEmail(value.email)
             formikAction.setSubmitting(false);
             formikAction.resetForm();
           }, 3000);
@@ -51,7 +47,7 @@ function FormRegister(props) {
             <Form autoComplete="on" name="hotel">
               {formik.errors.password && formik.touched.password && <Error />}
               {formik.errors.cfpassword &&formik.touched.cfpassword && <Error />}
-              <GetFormContent formik={formik} />
+              <GetFormContent formik={formik} onReturn={onReturn} alertMail={alertMail} />
             </Form>,
           ];
         }}

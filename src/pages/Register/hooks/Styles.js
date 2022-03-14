@@ -77,5 +77,11 @@ export const useStyles = makeStyles((theme) => ({
         flexDirection:'column',
         justifyContent: 'center',
         padding:10
+    },
+    ContainerForm2:{
+      // backgroundColor: "#ccc",
+      width:'40vw',
+      padding:20,
+      height:"60vh"
     }
   }));

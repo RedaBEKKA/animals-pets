@@ -3,8 +3,9 @@ import { Field } from "formik";
 import { Box, Button, Grid, TextField } from "@material-ui/core";
 import { useStyles } from "../hooks/Styles";
 import { colors } from "../../../themes/colors";
+import Alert from "@material-ui/lab/Alert";
 
-function From1({ formik }) {
+function From1({ formik ,alertMail}) {
   const classes = useStyles();
   console.log("formik", formik);
   return (
@@ -97,6 +98,8 @@ function From1({ formik }) {
           </Button>
         </Grid>
       </Box>
+      {alertMail ? <Alert severity="error" fullwidth>{alertMail}</Alert> : <></>}
+
     </div>
   );
 }
