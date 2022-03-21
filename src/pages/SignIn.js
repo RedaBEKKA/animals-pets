@@ -124,7 +124,7 @@ function Connection() {
                 label="Mot de passe"
                 name="phone" onChange={e => setMotDePasse(e.target.value)} value={motDePasse} />
             <Box m={0.5}>
-                <Link href={"/register"}>Mot de passe oublié</Link>
+                <Link href={"/forgot"}>Mot de passe oublié</Link>
             </Box>
 
             {signError ? <Alert severity="error">{signError}</Alert> : <></>}

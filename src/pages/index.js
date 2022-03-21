@@ -11,6 +11,7 @@ import SignIn from "./SignIn";
 import OrganizationInfo from "./OrganizationInfo";
 import MyAnnoncesPage from "./MyAnnoncesPage";
 import UserProfile from "./UserProfile";
+import ForgotPass from "./ForgotPass";
 
 export {
     Home,
@@ -25,6 +26,7 @@ export {
     AddAnnonce,
     Addproduct,
     StatisticsMrAdopt,
-    UserProfile
+    UserProfile,
+    ForgotPass
 }
 

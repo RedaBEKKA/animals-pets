@@ -13,7 +13,7 @@ import {
   SignIn,
   Statistics,
   StatisticsMrAdopt,
-  UserProfile,Register
+  UserProfile,Register,ForgotPass
 } from './pages';
 
 import React from "react";
@@ -36,6 +36,7 @@ function App() {
         <SecuredRoute path="/statisticsMrAdopt"> <StatisticsMrAdopt/></SecuredRoute>
         <Route path="/register"><Register/></Route>
         <Route path="/signIn"><SignIn/></Route>
+        <Route path="/forgot"><ForgotPass/></Route>
         <Route path="/"><SignIn/></Route>
 
 

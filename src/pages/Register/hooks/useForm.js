@@ -26,7 +26,8 @@ export function UseRegister() {
   const specialsRegEx = /[^A-Za-z 0-9]/g;
   const emailRegex =
     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-  const phoneRegex =
+  
+    const phoneRegex =
     /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g;
 
   let RegsiterSchema = Yup.object().shape({
@@ -40,7 +41,6 @@ export function UseRegister() {
       .min(4, "prenom est trop court - doit comporter au moins 4 caractères."),
     email: Yup.string()
       .matches(emailRegex, "Doit être un email valide !")
-
       .max(25, "email est trop long - doit être de 15 caractères maximum.")
       .required("email est requis")
       .min(4, "email est trop court - doit comporter au moins 4 caractères."),
