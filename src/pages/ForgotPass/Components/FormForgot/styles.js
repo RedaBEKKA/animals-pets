@@ -3,7 +3,7 @@ import { colors } from "../../../../themes/colors";
 
 export const useStyles = makeStyles((theme) => ({
   IndexPanier: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.whiteTr,
     width:'80%',
     padding:20,
     display:'flex',

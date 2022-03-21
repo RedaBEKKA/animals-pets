@@ -22,6 +22,8 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     height: "80%",
+    backgroundColor: colors.whiteTr,
+
   },
   form: {
     marginTop: "50px",
@@ -47,5 +49,7 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "centers",
     marginTop: 15,
+
+
   },
 }));

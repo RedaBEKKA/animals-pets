@@ -43,7 +43,6 @@ function FormForgot(props) {
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
       <Formik
-        className={classes.Form}
         initialValues={ForgotValues}
         validationSchema={RegsiterSchema}
         onSubmit={(value, formikAction) => {

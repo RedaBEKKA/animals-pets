@@ -3,7 +3,7 @@ import { colors } from "../../../../themes/colors";
 
 export const useStyles = makeStyles((theme) => ({
   Container: {
-    // backgroundColor: colors.grey,
+    backgroundColor: colors.whiteTr,
     width: "30vw",
     padding: "10px 20px",
     display: "flex",
