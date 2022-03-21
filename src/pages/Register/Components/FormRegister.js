@@ -9,7 +9,7 @@ import { useStyles } from "../hooks/Styles";
 import Error from "./Error";
 
 function FormRegister(props) {
-  const { RegsiterSchema, registerValues,pageId,fetchEmail,onReturn,alertMail } = UseRegister();
+  const { RegsiterSchema, registerValues,pageId,fetchEmail,onReturn,alertMail,onSubmit } = UseRegister();
   const classes = useStyles();
 
   /**
@@ -38,7 +38,8 @@ function FormRegister(props) {
         validationSchema={RegsiterSchema}
         onSubmit={(value,formikAction) => {
           setTimeout(() => {
-            fetchEmail(value.email)
+            // fetchEmail(value.email)
+            onSubmit()
             formikAction.setSubmitting(false);
             formikAction.resetForm();
           }, 3000);

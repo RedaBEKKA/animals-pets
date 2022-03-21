@@ -29,6 +29,29 @@ export default function Register() {
   );
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const nomsServices = ["Cession d'animaux(don, échange, vente)"];
 
 // import { geocodeByAddress, getLatLng } from "react-places-autocomplete";

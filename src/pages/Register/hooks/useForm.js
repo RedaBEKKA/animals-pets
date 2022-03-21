@@ -106,6 +106,7 @@ export function UseRegister() {
     fetchEmail,
     alertMail,
     pageId,
-    onReturn
+    onReturn,
+    onSubmit
   };
 }
