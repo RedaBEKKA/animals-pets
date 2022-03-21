@@ -6,6 +6,7 @@ import { useStyles } from "./styles";
 import { useForgot } from "../../Hooks/useForgot";
 import Forgot1 from "../Form1";
 import Forgot2 from "../Form2";
+import { useHistory } from "react-router-dom";
 
 function FormForgot(props) {
 
@@ -37,6 +38,7 @@ function FormForgot(props) {
         break;
     }
   };
+  const history = useHistory();
 
   return (
     <Paper className={classes.IndexPanier} elevation={0}>
@@ -50,6 +52,8 @@ function FormForgot(props) {
             console.log(value)
             formikAction.setSubmitting(false);
             formikAction.resetForm();
+            history.push("/signIn")
+
           }, 3000);
         }}
       >

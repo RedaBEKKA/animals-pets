@@ -11,7 +11,6 @@ import { useHistory } from "react-router-dom";
 function Forgot2({ formik, alertMail, onSubmit }) {
   console.log("formik", formik);
   const classes = useStyles();
-  const history = useHistory();
   return (
     <>
       <Box style={{ paddingLeft: 15, fontWeight: "700" }}>
