@@ -3,10 +3,10 @@ import { Paper } from "@material-ui/core";
 import React from "react";
 import { Form, Formik } from "formik";
 import { UseRegister } from "../hooks/useForm";
-import From1 from "./From1";
+import From1 from "./Form1/From1";
 import From2 from "./Form2/From2";
 import { useStyles } from "../hooks/Styles";
-import Error from "./Error";
+import Error from "./Form1/Components/Error";
 import { useHistory } from "react-router-dom";
 
 function FormRegister(props) {
@@ -78,12 +78,15 @@ const history = useHistory()
         validationSchema={RegsiterSchema}
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
-            // fetchEmail(value.email)
+            
+              // fetchEmail(value.email)
             // onSubmit();
             console.log(value)
             history.push("signIn")
             formikAction.setSubmitting(false);
             formikAction.resetForm();
+           
+
           }, 3000);
         }}
       >

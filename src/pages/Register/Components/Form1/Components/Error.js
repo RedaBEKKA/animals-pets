@@ -1,6 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
-import { useStyles } from "../hooks/Styles";
+import { useStyles } from "../../../hooks/Styles";
 
 function Error() {
   const classes = useStyles();

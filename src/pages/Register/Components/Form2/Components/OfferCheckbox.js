@@ -1,15 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  FormLabel,
-  Grid,
-  TextField,
-} from "@material-ui/core";
+import { Box, FormControl, FormLabel } from "@material-ui/core";
 import FormikControl from "../../../hooks/FormikControl";
 import Question from "../../../../../images/Question.png";
 import { useStyles } from "./styles";
@@ -41,8 +31,7 @@ function OfferCheckbox({ formik, TypeLenseigne, TypeOffre, typeInscrire }) {
           name="offre"
           options={TypeOffre}
           error={
-            formik.touched?.offre &&
-            !formik?.values?.offre?.length
+            formik.touched?.offre && !formik?.values?.offre?.length
               ? true
               : false
           }
@@ -65,14 +54,10 @@ function OfferCheckbox({ formik, TypeLenseigne, TypeOffre, typeInscrire }) {
             name="inscrire"
             options={typeInscrire}
             error={
-              formik.touched?.inscrire &&
-              !formik?.values?.inscrire?.length
+              formik.touched?.inscrire && !formik?.values?.inscrire?.length
                 ? false
                 : false
             }
-
-
-            
           />
         </FormControl>
       </Box>
@@ -81,16 +66,3 @@ function OfferCheckbox({ formik, TypeLenseigne, TypeOffre, typeInscrire }) {
 }
 
 export default OfferCheckbox;
-
-{
-  /* <FormControlLabel
-            style={{ marginTop: 10 }}
-            control={
-              <Checkbox
-                name="souscrire"
-                color="default"
-              />
-            }
-            label="Je souhaite souscrire au label Sain,Main,Responsable"
-          /> */
-}

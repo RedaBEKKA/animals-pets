@@ -5,8 +5,10 @@ import { colors } from "../../../../../themes/colors";
 
 function Buttons({ onReturn, formik }) {
   const classes = useStyles();
-  const { isSubmitting } = formik;
-
+  const { isSubmitting, isValid } = formik;
+  console.log(formik.values.TypeLenseigne.length);
+  console.log(formik.values.offre.length);
+  console.log(isValid);
   const Loading = () => {
     return <Box>Envoi...</Box>;
   };
@@ -29,6 +31,7 @@ function Buttons({ onReturn, formik }) {
         variant="contained"
         style={{ backgroundColor: colors.brown, color: colors.white }}
         className={classes.btn}
+        disabled={ formik.values.offre.length  !== 0 && formik.values.TypeLenseigne.legnth !== 0 ?   false : true}
       >
         {isSubmitting ? <Loading /> : "Terminer"}
       </Button>

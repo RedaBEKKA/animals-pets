@@ -1,12 +1,11 @@
-import {Box} from "@material-ui/core";
+import { Box } from "@material-ui/core";
 import React from "react";
 import { useStyles } from "../../hooks/Styles";
 import Buttons from "./Components/Buttons";
 import Inputs from "./Components/Inputs";
 import OfferCheckbox from "./Components/OfferCheckbox";
 
-    
-    function From2({ onReturn, TypeLenseigne,typeInscrire, formik,TypeOffre ,}) {
+function From2({ onReturn, TypeLenseigne, typeInscrire, formik, TypeOffre }) {
   const classes = useStyles();
   console.log(formik);
   return (
@@ -18,8 +17,7 @@ import OfferCheckbox from "./Components/OfferCheckbox";
         TypeOffre={TypeOffre}
         typeInscrire={typeInscrire}
       />
-        
-      <Buttons  onReturn={onReturn} formik={formik}/>
+      <Buttons onReturn={onReturn} formik={formik} />
     </Box>
   );
 }
