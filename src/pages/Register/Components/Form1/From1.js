@@ -4,11 +4,34 @@ import { Box, Button, Grid, TextField } from "@material-ui/core";
 import { useStyles } from "./Styles";
 import { colors } from "../../../../themes/colors";
 import Alert from "@material-ui/lab/Alert";
-import { Link } from "react-router-dom";
+import ButtonContainer from "./Components/Button";
 
 function From1({ formik, alertMail, onSubmit, ChampVide, ActivateAlert }) {
   const classes = useStyles();
 
+  const AlertItem = () => {
+    return ChampVide ? (
+      <Alert
+        severity="error"
+        fullwidth
+        style={{ margin: "5px 0px 40px 0px", width: "100%", color: "#f00" }}
+      >
+        {ChampVide}
+      </Alert>
+    ) : (
+      <></>
+    );
+  };
+
+  const AlertMailItem = () => {
+    return alertMail ? (
+      <Alert severity="error" fullwidth>
+        {alertMail}
+      </Alert>
+    ) : (
+      <></>
+    );
+  };
   const NextPage = () => {
     if (
       formik?.values?.nom?.length &&
@@ -31,24 +54,7 @@ function From1({ formik, alertMail, onSubmit, ChampVide, ActivateAlert }) {
       ActivateAlert();
     }
   };
-  const AlertItem = () => {
-    return ChampVide ? (
-      <Alert severity="error" fullwidth style={{ margin: "5px 0px 40px 0px" ,width:'100%',color:"#f00" }}>
-        {ChampVide}
-      </Alert>
-    ) : (
-      <></>
-    );
-  };
-  const AlertMailItem = () => {
-    return alertMail ? (
-      <Alert severity="error" fullwidth>
-        {alertMail}
-      </Alert>
-    ) : (
-      <></>
-    );
-  };
+
   return (
     <Box className={classes.ContainerForm1}>
       <AlertItem />
@@ -129,24 +135,13 @@ function From1({ formik, alertMail, onSubmit, ChampVide, ActivateAlert }) {
 
       <AlertMailItem />
 
-      <Box className={classes.containerButtons}>
-        <Link to="/signIn" style={{paddingLeft:15}}> Déja un compte ? Se connecter</Link>
-        <Button
-          onClick={() => {
-            NextPage();
-          }}
-          variant="contained"
-          style={{
-            backgroundColor: colors.brown,
-            color: colors.white,
-            fontWeight: "700",
-          }}
-          className={classes.btn}
-          disabled={formik.isSubmitting ? true : false}
-        >
-          Suivant &gt;
-        </Button>
-      </Box>
+      <ButtonContainer
+        alertMail={alertMail}
+        ActivateAlert={ActivateAlert}
+        onSubmit={onSubmit}
+        NextPage={NextPage}
+
+      />
     </Box>
   );
 }

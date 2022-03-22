@@ -25,7 +25,7 @@ function FormRegister(props) {
     ActivateAlert,
   } = UseRegister();
   const classes = useStyles();
-const history = useHistory()
+  const history = useHistory();
   /**
    * Récupération du contenu de page selon le numéro de page
    * page 0 : nom,prénom... mot de passe
@@ -41,7 +41,7 @@ const history = useHistory()
     AddressesOption,
     typeInscrire,
     ChampVide,
-    ActivateAlert
+    ActivateAlert,
   }) => {
     switch (pageId) {
       case 0:
@@ -78,15 +78,10 @@ const history = useHistory()
         validationSchema={RegsiterSchema}
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
-            
-              // fetchEmail(value.email)
-            // onSubmit();
-            console.log(value)
-            history.push("signIn")
+            console.log(value);
+            history.push("signIn");
             formikAction.setSubmitting(false);
             formikAction.resetForm();
-           
-
           }, 3000);
         }}
       >
