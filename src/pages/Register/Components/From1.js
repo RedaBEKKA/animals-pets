@@ -5,10 +5,17 @@ import { useStyles } from "../hooks/Styles";
 import { colors } from "../../../themes/colors";
 import Alert from "@material-ui/lab/Alert";
 
-function From1({ formik ,alertMail}) {
+function From1({ formik, alertMail, onSubmit, ChampVide, ActivateAlert }) {
   const classes = useStyles();
   return (
-    <div style={{ marginTop: "50px" , padding:20 }}>
+    <div style={{ marginTop: "0px", padding: 20 }}>
+          {ChampVide ? (
+        <Alert severity="error" fullwidth style={{margin:'5px 0px 40px 0px'}}>
+          {ChampVide}
+        </Alert>
+      ) : (
+        <></>
+      )}
       <Grid container justify="space-between">
         <Field
           variant="outlined"
@@ -87,20 +94,63 @@ function From1({ formik ,alertMail}) {
       <Box mt={10} style={{ width: "93%" }}>
         <Grid container spacing={10} justify="flex-end" mr={15}>
           <Button
-            onClick={() => {formik.handleSubmit() }}
+            onClick={() => {
+              // formik.handleSubmit()
+              // onSubmit()
+              console.log(formik);
+              // if (formik?.errors.Addresses && formik?.errors.nomentreprise) {
+              // }
+              if (
+                formik?.values?.nom?.length  &&
+                formik?.errors.nom == null &&
+                formik?.values.prenom.length  &&
+                formik?.errors.prenom == null &&
+                formik?.values.email.length  &&
+                formik?.errors.email == null &&
+                formik?.values.phone.length  &&
+                formik?.errors.phone == null &&
+                formik?.values.password.length  &&
+                formik?.errors.password == null &&
+                formik?.values.cfpassword.length  &&
+                formik?.errors.cfpassword == null &&
+                formik?.errors.Addresses &&
+                formik?.errors.nomentreprise
+              ) {
+                onSubmit();
+              } else {
+                ActivateAlert();
+              }
+            }}
             variant="contained"
             style={{ backgroundColor: colors.brown }}
             className={classes.btn}
-            disabled={formik.isSubmitting ?  true: false}
+            disabled={formik.isSubmitting ? true : false}
           >
             Suivant &gt;
           </Button>
         </Grid>
       </Box>
-      {alertMail ? <Alert severity="error" fullwidth>{alertMail}</Alert> : <></>}
+      {alertMail ? (
+        <Alert severity="error" fullwidth>
+          {alertMail}
+        </Alert>
+      ) : (
+        <></>
+      )}
 
     </div>
   );
 }
 
 export default From1;
+
+//  formik?.touched.prenom == true &&
+//     !formik?.errors.prenom &&
+//     formik?.touched.email == true &&
+//     !formik?.errors.email &&
+//     formik?.touched.phone == true &&
+//     !formik?.errors.phone &&
+//     formik?.touched.password == true &&
+//     !formik?.errors.password &&
+//     formik?.touched.cfpassword == true &&
+//     !formik?.errors.cfpassword

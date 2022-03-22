@@ -17,9 +17,8 @@ export default function Register() {
           <Grid>
             <img
               alt="Logo Mister Coocky"
-              width={160}
               src={logo}
-              style={{ height: "15vh" }}
+              style={{ height: 200, width:300 }}
             />
           </Grid>
           <FormRegister />

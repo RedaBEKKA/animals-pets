@@ -7,17 +7,44 @@ import misterCoockyApi from "../../../constante/apiUrl";
 setLocale(fr);
 
 export function UseRegister() {
-  const [pageId, setPageId] = useState(1); //numéro de page du formulaire d'inscription (0,1,2)
+  const [pageId, setPageId] = useState(0); //numéro de page du formulaire d'inscription (0,1,2)
   const [alertMail, setAlertMail] = useState(""); //message d'alerte au niveau de l'adresse mail
+  const [ChampVide, setChampVide] = useState(""); //message d'alerte au niveau chmpvide
+  const TypeLenseigne = [
+    { key: "1", value: "Artisan" },
+    { key: "2", value: "Magasin spécialisé" },
+    { key: "3", value: "Magasin généraliste" },
+    { key: "4", value: "Association" },
+    { key: "5", value: "Marque" },
+    { key: "6", value: "Marquetplace" },
+  ];
 
+  const TypeOffre = [
+    { key: "1", value: "Alimentation" },
+    { key: "2", value: "Accessoire" },
+    { key: "3", value: "Services" },
+  ];
+  const typeInscrire = [
+    { key: "1", value: "Je souhaite souscrire au label Sain,Main,Responsable" },
+  ];
+  const AddressesOption = [
+    { key: "Select an option", value: "" },
+    { key: "Option 1", value: "option1" },
+    { key: "Option 2", value: "option2" },
+    { key: "Option 3", value: "option3" },
+  ];
   const registerValues = {
     nom: "",
     prenom: "",
     email: "",
     phone: "",
-    nom: "",
     password: "",
     cfpassword: "",
+    TypeLenseigne: [],
+    nomentreprise: "",
+    Addresses: "",
+    offre: [],
+    inscrire: [],
   };
 
   const lowercaseRegEx = /(?=.*[a-z])/;
@@ -26,8 +53,8 @@ export function UseRegister() {
   const specialsRegEx = /[^A-Za-z 0-9]/g;
   const emailRegex =
     /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/;
-  
-    const phoneRegex =
+
+  const phoneRegex =
     /(\+\d{1,3}\s?)?((\(\d{3}\)\s?)|(\d{3})(\s|-?))(\d{3}(\s|-?))(\d{4})(\s?(([E|e]xt[:|.|]?)|x|X)(\s?\d+))?/g;
 
   let RegsiterSchema = Yup.object().shape({
@@ -48,7 +75,16 @@ export function UseRegister() {
       .min(10, "Numéro téléphone is too short - should be 10 number Minimum.")
       .matches(phoneRegex, "Doit être un numéro valide !")
       .required("Numéro téléphone est requis"),
-
+    nomentreprise: Yup.string()
+      .max(
+        15,
+        "nom entreprise est trop long - doit être de 15 caractères maximum."
+      )
+      .required("nom entreprise est requis")
+      .min(
+        4,
+        "nom entreprise est trop court - doit comporter au moins 4 caractères."
+      ),
     password: Yup.string()
       .max(
         15,
@@ -68,6 +104,9 @@ export function UseRegister() {
     cfpassword: Yup.string()
       .required("Confirme mot de passe est requis")
       .oneOf([Yup.ref("password")], "Les mots de passe ne correspondent pas"),
+    TypeLenseigne: Yup.array().required("Type L'enseigne requis"),
+    offre: Yup.array().required("Type offre requis"),
+    Addresses: Yup.string().required("Addresses requis"),
   });
 
   const fetchEmail = (email) => {
@@ -94,12 +133,16 @@ export function UseRegister() {
         }
       });
   };
-  const onSubmit = ()=>{
-    setPageId(pageId +1)
-  }
-  const onReturn = ()=>{
-    setPageId(pageId -1)
-  }
+  const onSubmit = () => {
+    setPageId(pageId + 1);
+  };
+  const onReturn = () => {
+    setPageId(pageId - 1);
+  };
+
+  const ActivateAlert = ()=>{
+    setChampVide('Champ vide ou non valide !')
+  } 
   return {
     registerValues,
     RegsiterSchema,
@@ -107,6 +150,12 @@ export function UseRegister() {
     alertMail,
     pageId,
     onReturn,
-    onSubmit
+    onSubmit,
+    TypeLenseigne,
+    AddressesOption,
+    TypeOffre,
+    typeInscrire,
+    ChampVide,
+    ActivateAlert
   };
 }
