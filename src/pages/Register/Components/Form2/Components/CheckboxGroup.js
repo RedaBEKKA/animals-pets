@@ -19,7 +19,7 @@ function CheckboxGroup(props) {
 
         {options.map((option) => {
           return (
-            <Box className={classes.item}>
+            <Box className={classes.item} key={option.value}>
               <Field type="checkbox" name={name} value={option.value} />
               <FormLabel className={classes.textLabel}>
                 {option.value}

@@ -3,6 +3,7 @@ import { fr } from "yup-locales";
 import { setLocale } from "yup";
 import { useState } from "react";
 import misterCoockyApi from "../../../constante/apiUrl";
+import { useSelector } from "react-redux";
 
 setLocale(fr);
 
@@ -46,7 +47,8 @@ export function UseRegister() {
     offre: [],
     inscrire: [],
   };
-
+  const Address = useSelector((state) => state.Address);
+  const { Adresses ,Cordinates} = Address;
   const lowercaseRegEx = /(?=.*[a-z])/;
   const uppercaseRegEx = /(?=.*[A-Z])/;
   const numericRegEx = /(?=.*[0-9])/;
@@ -172,11 +174,11 @@ export function UseRegister() {
             offers: value.offre,
           },
           adress: {
-            street: value.Addresses,
-            // geoLocation: {
-            //   latitude: coordinates.lat,
-            //   longitude: coordinates.lng,
-            // },
+            street: Adresses,
+            geoLocation: {
+              latitude: Cordinates.lat,
+              longitude: Cordinates.lng,
+            },
           },
           user: {
             name: value.nom + " " + value.prenom,
@@ -207,6 +209,12 @@ export function UseRegister() {
 
 
   };
+
+  const Validate=(value)=>{
+    console.log('FromUSR', Adresses ,Cordinates)
+    console.log('value', value)
+
+  }
   return {
     registerValues,
     RegsiterSchema,

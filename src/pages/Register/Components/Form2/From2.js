@@ -11,8 +11,6 @@ function From2({
   typeInscrire,
   formik,
   TypeOffre,
-  HandelValues,
-  Adresses
 }) {
   const classes = useStyles();
   // console.log(formik);
@@ -20,7 +18,7 @@ function From2({
     <Box className={classes.ContainerForm2}>
       <Inputs
         formik={formik}
-        HandelValues={HandelValues}
+        
       />
       <OfferCheckbox
         formik={formik}
@@ -28,7 +26,7 @@ function From2({
         TypeOffre={TypeOffre}
         typeInscrire={typeInscrire}
       />
-      <Buttons onReturn={onReturn} formik={formik} Adresses={Adresses} />
+      <Buttons onReturn={onReturn} formik={formik} />
     </Box>
   );
 }

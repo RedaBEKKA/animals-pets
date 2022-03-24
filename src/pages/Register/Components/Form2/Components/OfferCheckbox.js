@@ -27,7 +27,7 @@ function OfferCheckbox({ formik, TypeLenseigne, TypeOffre, typeInscrire }) {
       <Box>
         <FormikControl
           control="checkbox"
-          label="Type de l'enseigne*"
+          label="Type de l'offre*"
           name="offre"
           options={TypeOffre}
           error={

@@ -1,15 +1,20 @@
 import { Box, TextField } from "@material-ui/core";
 import { Field } from "formik";
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { colors } from "../../../../../themes/colors";
 import { useStyles } from "./styles";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
 } from "react-places-autocomplete";
-import { FormControl } from "@material-ui/core";
+import {
+  GET_ADDRESS,
+  GET_CORDINATES,
+  GET_DEL_ADDRESS_CORDINATES,
+} from "../../../../../Redux/Types";
+import { useDispatch, useSelector } from "react-redux";
 
-function Inputs({ formik, HandelValues }) {
+function Inputs({ formik }) {
   const classes = useStyles();
   const [adresse, setAdresse] = useState("");
   const [Valide, setValide] = useState(false);
@@ -18,20 +23,32 @@ function Inputs({ formik, HandelValues }) {
     lng: null,
   });
 
-  // console.log("formik", formik, coordinates);
+  const Address = useSelector((state) => state.Address);
+  const { Adresses, check } = Address;
+  const dispatch = useDispatch();
   const handleAddressSelect = async (value) => {
     const results = await geocodeByAddress(value);
     const latLng = await getLatLng(results[0]);
+    // dispatch({ type: GET_ADDRESS, payload: value });
+    // dispatch({ type: GET_CORDINATES, payload: latLng });
     setAdresse(value);
     setCoordinates(latLng);
-    setValide(true);
+
+    // setValide(true);
   };
-  useLayoutEffect(() => {
-    if (Valide) {
-      HandelValues(adresse, coordinates);
-      // setValide(false);
-    }
-  }, [Valide == true]);
+  // useLayoutEffect(() => {
+  //   if (Valide && adresse.length > 3) {
+  //     dispatch({ type: GET_ADDRESS, payload: adresse });
+  //     dispatch({ type: GET_CORDINATES, payload: coordinates });
+  //     // setValide(false);
+  //   } else {
+  //     console.log("Valide", Valide);
+  //   }
+
+  //   // if ( adresse.length == 0 && check ) {
+  //   //   dispatch({ type: GET_DEL_ADDRESS_CORDINATES });
+  //   // }
+  // }, [Valide]);
 
   return (
     <Box className={classes.inputBox}>
@@ -66,10 +83,7 @@ function Inputs({ formik, HandelValues }) {
                 variant="outlined"
                 required
                 fullWidth
-                id="Addresses"
-                label="Addresses"
                 as={TextField}
-                value={adresse}
                 error={
                   adresse?.length < 3 && adresse?.length !== 0 ? true : false
                 }

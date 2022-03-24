@@ -23,6 +23,7 @@ function FormRegister(props) {
     typeInscrire,
     ChampVide,
     ActivateAlert,
+    Validate
   } = UseRegister();
   const classes = useStyles();
   const history = useHistory();
@@ -32,19 +33,9 @@ function FormRegister(props) {
    * page 1 : organisation
    * @returns {*}
    */
-  const [Adresses, setAdresses] = useState("");
-  const [Cordinates, setCordinates] = useState([]);
 
-  const HandelValues = (V1, V2) => {
-    //  console.log('V1', V1)
-    //  setCordinates(V2)
-    if (V1?.length < 3 && V1?.length !== 0) {
-      setAdresses(V1);
-      setCordinates(V2);
-    }
-    // setAdresses(V1);
-  };
-  // console.log("Adresses,Cordinates", Adresses);
+
+
 
   const GetFormContent = ({
     formik,
@@ -56,7 +47,7 @@ function FormRegister(props) {
     ChampVide,
     ActivateAlert,
     ValidateRegister,
-    HandelValues,
+
   }) => {
     switch (pageId) {
       case 0:
@@ -78,8 +69,7 @@ function FormRegister(props) {
             TypeLenseigne={TypeLenseigne}
             TypeOffre={TypeOffre}
             typeInscrire={typeInscrire}
-            HandelValues={HandelValues}
-            Adresses={Adresses}
+         
           />
         );
       default:
@@ -94,8 +84,9 @@ function FormRegister(props) {
         validationSchema={RegsiterSchema}
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
-            console.log(value, Cordinates, Adresses);
+            // console.log(value);
             // ValidateRegister(value)
+            Validate(value)
             history.push("signIn");
             formikAction.setSubmitting(false);
             formikAction.resetForm();
@@ -119,8 +110,7 @@ function FormRegister(props) {
                 onSubmit={onSubmit}
                 ChampVide={ChampVide}
                 ActivateAlert={ActivateAlert}
-                HandelValues={HandelValues}
-                Adresses={Adresses}
+               
               />
             </Form>,
           ];

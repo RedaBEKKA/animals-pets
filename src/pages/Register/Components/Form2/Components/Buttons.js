@@ -2,13 +2,16 @@ import React from "react";
 import { Box, Button, Grid } from "@material-ui/core";
 import { useStyles } from "../../../hooks/Styles";
 import { colors } from "../../../../../themes/colors";
+import { useSelector } from "react-redux";
 
-function Buttons({ onReturn, formik ,Adresses}) {
+function Buttons({ onReturn, formik }) {
   const classes = useStyles();
   const { isSubmitting, isValid } = formik;
   // console.log(formik.values.TypeLenseigne.length);
   // console.log(formik.values.offre.length);
-  console.log("btn",Adresses);
+  const Address = useSelector((state) => state.Address);
+
+  const { Cordinates, Adresses } = Address;
   const Loading = () => {
     return <Box>Envoi...</Box>;
   };
@@ -31,7 +34,13 @@ function Buttons({ onReturn, formik ,Adresses}) {
         variant="contained"
         style={{ backgroundColor: colors.brown, color: colors.white }}
         className={classes.btn}
-        disabled={ formik.values.offre.length  !== 0 && Adresses.length !==0 && formik.values.TypeLenseigne.legnth !== 0 ?   false : true}
+        disabled={
+          formik?.values?.TypeLenseigne?.length !== 0 &&
+          formik?.values?.offre?.length &&
+          Adresses.length !== 0
+            ? false
+            : true
+        }
       >
         {isSubmitting ? <Loading /> : "Terminer"}
       </Button>
