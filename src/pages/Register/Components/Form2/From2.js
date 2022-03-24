@@ -1,44 +1,39 @@
 import { Box } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { useStyles } from "../../hooks/Styles";
 import Buttons from "./Components/Buttons";
 import Inputs from "./Components/Inputs";
 import OfferCheckbox from "./Components/OfferCheckbox";
 
-function From2({ onReturn, TypeLenseigne, typeInscrire, formik, TypeOffre }) {
+function From2({
+  onReturn,
+  TypeLenseigne,
+  typeInscrire,
+  formik,
+  TypeOffre,
+  HandelValues,
+  Adresses
+}) {
   const classes = useStyles();
-  console.log(formik);
+  // console.log(formik);
   return (
     <Box className={classes.ContainerForm2}>
-      <Inputs formik={formik} />
+      <Inputs
+        formik={formik}
+        HandelValues={HandelValues}
+      />
       <OfferCheckbox
         formik={formik}
         TypeLenseigne={TypeLenseigne}
         TypeOffre={TypeOffre}
         typeInscrire={typeInscrire}
       />
-      <Buttons onReturn={onReturn} formik={formik} />
+      <Buttons onReturn={onReturn} formik={formik} Adresses={Adresses} />
     </Box>
   );
 }
 
 export default From2;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 {
   /* <Box className={classes.inputBox}>
@@ -89,5 +84,3 @@ export default From2;
 //     </div>
 //   )}
 // </PlacesAutocomplete>
-
-

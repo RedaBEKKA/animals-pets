@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 function Forgot1({ formik, alertMail, onSubmit }) {
-  console.log("formik", formik);
+  // console.log("formik", formik);
   const classes = useStyles();
  const history = useHistory()
   return (

@@ -48,7 +48,7 @@ function FormForgot(props) {
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
             // fetchEmail(value.email)
-            console.log(value)
+            // console.log(value)
             formikAction.setSubmitting(false);
             formikAction.resetForm();
             history.push("/signIn")

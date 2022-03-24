@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import { Paper } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Form, Formik } from "formik";
 import { UseRegister } from "../hooks/useForm";
 import From1 from "./Form1/From1";
@@ -32,6 +32,19 @@ function FormRegister(props) {
    * page 1 : organisation
    * @returns {*}
    */
+  const [Adresses, setAdresses] = useState("");
+  const [Cordinates, setCordinates] = useState([]);
+
+  const HandelValues = (V1, V2) => {
+    //  console.log('V1', V1)
+    //  setCordinates(V2)
+    if (V1?.length < 3 && V1?.length !== 0) {
+      setAdresses(V1);
+      setCordinates(V2);
+    }
+    // setAdresses(V1);
+  };
+  // console.log("Adresses,Cordinates", Adresses);
 
   const GetFormContent = ({
     formik,
@@ -42,7 +55,8 @@ function FormRegister(props) {
     typeInscrire,
     ChampVide,
     ActivateAlert,
-    ValidateRegister
+    ValidateRegister,
+    HandelValues,
   }) => {
     switch (pageId) {
       case 0:
@@ -64,13 +78,14 @@ function FormRegister(props) {
             TypeLenseigne={TypeLenseigne}
             TypeOffre={TypeOffre}
             typeInscrire={typeInscrire}
+            HandelValues={HandelValues}
+            Adresses={Adresses}
           />
         );
       default:
         break;
     }
   };
-
   return (
     <Paper elevation={0}>
       <Formik
@@ -79,7 +94,7 @@ function FormRegister(props) {
         validationSchema={RegsiterSchema}
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
-            console.log(value);
+            console.log(value, Cordinates, Adresses);
             // ValidateRegister(value)
             history.push("signIn");
             formikAction.setSubmitting(false);
@@ -104,6 +119,8 @@ function FormRegister(props) {
                 onSubmit={onSubmit}
                 ChampVide={ChampVide}
                 ActivateAlert={ActivateAlert}
+                HandelValues={HandelValues}
+                Adresses={Adresses}
               />
             </Form>,
           ];
