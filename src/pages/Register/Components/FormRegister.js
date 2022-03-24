@@ -42,6 +42,7 @@ function FormRegister(props) {
     typeInscrire,
     ChampVide,
     ActivateAlert,
+    ValidateRegister
   }) => {
     switch (pageId) {
       case 0:
@@ -79,6 +80,7 @@ function FormRegister(props) {
         onSubmit={(value, formikAction) => {
           setTimeout(() => {
             console.log(value);
+            // ValidateRegister(value)
             history.push("signIn");
             formikAction.setSubmitting(false);
             formikAction.resetForm();

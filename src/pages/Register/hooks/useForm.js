@@ -140,9 +140,73 @@ export function UseRegister() {
     setPageId(pageId - 1);
   };
 
-  const ActivateAlert = ()=>{
-    setChampVide('Champ vide ou non valide !')
-  } 
+  const ActivateAlert = () => {
+    setChampVide("Champ vide ou non valide !");
+  };
+
+  const ValidateRegister = (value) => {
+    let URL = `${misterCoockyApi.misterCoockyApi}/graphql`;
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `
+                  mutation($organization: OrganizationInput!, $adress:AdressInput!, $user:UserIntput!){
+                      registerUserPro( organization: $organization,  adress:$adress, user:$user)
+                      {​​​​​​
+                          id
+                          organization{
+                              id
+                              supplier{
+                                  id
+                              }
+                          }
+                      }​​​​​​​
+                  }`,
+        variables: {
+          organization: {
+            name: value.nomentreprise,
+            orgas: value.typesOrga,
+            offers: value.offre,
+          },
+          adress: {
+            street: value.Addresses,
+            // geoLocation: {
+            //   latitude: coordinates.lat,
+            //   longitude: coordinates.lng,
+            // },
+          },
+          user: {
+            name: value.nom + " " + value.prenom,
+            email: value.email,
+            phone: value.phone,
+            password: value.password,
+          },
+        },
+      }),
+    })
+    .then((res) => res.json())
+    .then(function (result) {
+      // if (result.data.registerUserPro !== []) {
+      //   localStorage.setItem("userId", result.data.registerUserPro.id);
+      //   localStorage.setItem(
+      //     "organizationId",
+      //     result.data.registerUserPro.organization.id
+      //   );
+      //   localStorage.setItem(
+      //     "supplierId",
+      //     result.data.registerUserPro.organization.supplier.id
+      //   );
+
+      //   window.location.href = "/home";
+      // }
+      console.log('result', result)
+    });
+
+
+  };
   return {
     registerValues,
     RegsiterSchema,
@@ -156,6 +220,7 @@ export function UseRegister() {
     TypeOffre,
     typeInscrire,
     ChampVide,
-    ActivateAlert
+    ActivateAlert,
+    ValidateRegister
   };
 }
