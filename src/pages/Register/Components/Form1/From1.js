@@ -8,7 +8,7 @@ import ButtonContainer from "./Components/Button";
 
 function From1({ formik, alertMail, onSubmit, ChampVide, ActivateAlert }) {
   const classes = useStyles();
-console.log('formik', formik)
+// console.log('formik', formik)
   const AlertItem = () => {
     return ChampVide ? (
       <Alert
@@ -46,7 +46,7 @@ console.log('formik', formik)
       formik?.errors.password == null &&
       formik?.values.cfpassword.length &&
       formik?.errors.cfpassword == null &&
-      formik?.errors.Addresses &&
+      // formik?.errors.Addresses &&
       formik?.errors.nomentreprise
     ) {
       onSubmit();

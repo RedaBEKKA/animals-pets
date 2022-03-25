@@ -43,7 +43,7 @@ export function UseRegister() {
     cfpassword: "",
     TypeLenseigne: [],
     nomentreprise: "",
-    Addresses: "",
+    // Addresses: "",
     offre: [],
     inscrire: [],
   };
@@ -108,7 +108,7 @@ export function UseRegister() {
       .oneOf([Yup.ref("password")], "Les mots de passe ne correspondent pas"),
     TypeLenseigne: Yup.array().required("Type L'enseigne requis"),
     offre: Yup.array().required("Type offre requis"),
-    Addresses: Yup.string().required("Addresses requis"),
+    // Addresses: Yup.string().required("Addresses requis"),
   });
 
   const fetchEmail = (email) => {
@@ -229,6 +229,7 @@ export function UseRegister() {
     typeInscrire,
     ChampVide,
     ActivateAlert,
-    ValidateRegister
+    ValidateRegister,
+    Validate
   };
 }
