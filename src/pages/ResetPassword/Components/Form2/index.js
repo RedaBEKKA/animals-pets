@@ -1,15 +1,12 @@
 import { Field } from "formik";
 import React from "react";
 
-import { Box, Button, Grid, TextField } from "@material-ui/core";
+import { Box, Button, CircularProgress, Grid, TextField } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 import { colors } from "../../../../themes/colors";
 import { useStyles } from "./styles";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
-function Forgot2({ formik, alertMail, onSubmit }) {
-  // console.log("formik", formik);
+function Forgot2({ formik, alertMail }) {
   const classes = useStyles();
   return (
     <>
@@ -61,6 +58,13 @@ function Forgot2({ formik, alertMail, onSubmit }) {
             disabled={formik.isSubmitting ? true : false}
           >
             Enregistrer
+            {formik.isSubmitting && (
+              <CircularProgress
+                color={colors.white}
+                size={18}
+                style={{ marginLeft: 10 }}
+              />
+            )}
           </Button>
         </Box>
 

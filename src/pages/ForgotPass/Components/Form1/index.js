@@ -1,23 +1,27 @@
 import { Field } from "formik";
 import React from "react";
 
-import { Box, Button, Grid, TextField } from "@material-ui/core";
+import { Box, Button, CircularProgress, TextField } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
-import { colors } from "../../../../themes/colors";
 import { useStyles } from "./styles";
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { colors } from "../../../../themes/colors";
 
-function Forgot1({ formik, alertMail, onSubmit }) {
-  // console.log("formik", formik);
+function Form1({ formik, alertMail, AlertInfo }) {
   const classes = useStyles();
- const history = useHistory()
+  const history = useHistory();
   return (
     <>
       <Box style={{ paddingLeft: 15 }}>
         Un lien de réinitialisation de mot de passe sera envoyé a cette adresse
       </Box>
-
+      {AlertInfo ? (
+        <Alert severity="info" fullwidth style={{ marginTop: 15 }}>
+          {AlertInfo}
+        </Alert>
+      ) : (
+        <></>
+      )}
       <Box className={classes.Container}>
         <Field
           variant="outlined"
@@ -37,7 +41,7 @@ function Forgot1({ formik, alertMail, onSubmit }) {
         <Box mt={10} className={classes.ContainerButtons}>
           <Button
             onClick={() => {
-              history.push("/signIn")
+              history.push("/signIn");
             }}
             variant="contained"
             style={{
@@ -49,22 +53,22 @@ function Forgot1({ formik, alertMail, onSubmit }) {
           >
             Précedent
           </Button>
-            
+
           <Button
-            onClick={() => {
-              if (!formik?.errors.email) {
-                formik.submitForm();
-              } 
-               if (formik?.touched.email == true && !formik?.errors.email) {
-                onSubmit();
-              }
-            }}
             variant="contained"
             style={{ backgroundColor: colors.brown }}
             className={classes.btn}
             disabled={formik.isSubmitting ? true : false}
+            type="submit"
           >
             Envoyer
+            {formik.isSubmitting && (
+              <CircularProgress
+                color={colors.white}
+                size={18}
+                style={{ marginLeft: 10 }}
+              />
+            )}
           </Button>
         </Box>
 
@@ -80,4 +84,4 @@ function Forgot1({ formik, alertMail, onSubmit }) {
   );
 }
 
-export default Forgot1;
+export default Form1;

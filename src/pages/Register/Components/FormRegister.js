@@ -23,7 +23,8 @@ function FormRegister(props) {
     typeInscrire,
     ChampVide,
     ActivateAlert,
-    Validate
+    Validate,
+    ValidateRegister
   } = UseRegister();
   const classes = useStyles();
   const history = useHistory();

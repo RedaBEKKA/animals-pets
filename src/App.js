@@ -18,6 +18,8 @@ import {
 
 import React from "react";
 import SecuredRoute from "./components/SecuredRoute";
+import ResetPass from './pages/ResetPassword';
+import Protected from './components/Protected';
 
 function App() {
   return (
@@ -37,6 +39,7 @@ function App() {
         <Route path="/register"><Register/></Route>
         <Route path="/signIn"><SignIn/></Route>
         <Route path="/forgot"><ForgotPass/></Route>
+        <Protected path="/reset-password"><ResetPass/></Protected>
         <Route path="/"><SignIn/></Route>
 
 

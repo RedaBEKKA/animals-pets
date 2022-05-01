@@ -2,4 +2,7 @@ export const GET_ADDRESS = "GET_ADDRESS";
 export const GET_DEL_ADDRESS_CORDINATES = "GET_DEL_ADDRESS_CORDINATES";
 export const GET_CORDINATES = "GET_CORDINATES";
 
+// EmailValidation
+export const GET_VALIDATION = "GET_VALIDATION";
+
 

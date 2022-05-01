@@ -13,7 +13,7 @@ function From2({
   TypeOffre,
 }) {
   const classes = useStyles();
-  // console.log(formik);
+  console.log(formik);
   return (
     <Box className={classes.ContainerForm2}>
       <Inputs
